@@ -2,10 +2,7 @@ import inspect
 import logging
 import warnings
 from typing import cast as t_cast
-from typing import Dict
-from typing import List
 from typing import Optional
-from typing import Tuple
 
 from flask import current_app
 from flask import flash
@@ -283,9 +280,9 @@ class ModelView(BaseModelView):
                 inline_models = (MyInlineModelForm(MyInlineModel),)
     """
 
-    column_type_formatters = DEFAULT_FORMATTERS  # type: ignore[assignment]
+    column_type_formatters = DEFAULT_FORMATTERS
 
-    form_choices: Optional[Dict[str, List[Tuple[str, str]]]] = None
+    form_choices: Optional[dict[str, list[tuple[str, str]]]] = None
     """
         Map choices to form fields
 

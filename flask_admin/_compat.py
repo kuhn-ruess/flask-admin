@@ -39,3 +39,18 @@ def as_unicode(s):
 def csv_encode(s):
     """Returns unicode string expected by Python 3's csv module"""
     return as_unicode(s)
+
+
+def _iter_choices_wtforms_compat(val, label, selected):
+    """Compatibility for 3-tuples and 4-tuples in iter_choices
+
+    https://wtforms.readthedocs.io/en/3.2.x/changes/#version-3-2-0
+    """
+    import wtforms
+
+    wtforms_version = tuple(int(part) for part in wtforms.__version__.split(".")[:2])
+
+    if wtforms_version >= (3, 2):
+        return val, label, selected, {}
+
+    return val, label, selected
